@@ -3,13 +3,13 @@ import { FONTS } from "../constants";
 
 interface TextOptions {
 	words: string[];
-	speed: number;
+	wpm: number;
 	font: string;
 }
 
 const defaultOptions = {
 	words: [],
-	speed: 200,
+	wpm: 200,
 	font: FONTS.GARAMOND
 }
 
@@ -19,9 +19,9 @@ export const setFont = (font: typeof FONTS[keyof typeof FONTS]) => {
 	text.setKey('font', font);
 }
 
-export const setSpeed = (speed: number) => {
-	if (speed < 0) speed = 1;
-	text.setKey('speed', speed);
+export const setWPM = (wpm: number) => {
+	if (wpm < 0) wpm = 1;
+	text.setKey('wpm', wpm);
 }
 
 export const setWords = (words: string[]) => {

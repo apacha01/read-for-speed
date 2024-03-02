@@ -30,12 +30,6 @@ const { title, description } = Astro.props;
 			} else {
 				document.documentElement.classList.remove("dark");
 			}
-
-			// Whenever the user explicitly chooses light mode
-			localStorage.theme = "light";
-
-			// Whenever the user explicitly chooses dark mode
-			localStorage.theme = "dark";
 		</script>
 	</head>
 	<body class="w-screen h-screen max-w-screen min-h-screen">
@@ -48,3 +42,14 @@ const { title, description } = Astro.props;
 		font-family: "EB Garamond", serif;
 	}
 </style>
+
+<script>
+	import { text } from "../stores/text";
+
+	text.subscribe((v, ov, c) => {
+		if (c === "font") {
+			const html = document.querySelector("html");
+			html.style.fontFamily = v.font;
+		}
+	});
+</script>

@@ -1,40 +1,95 @@
 <aside class={Astro.props.class}>
 	<p>
 		I prefer a
-		<button class="border border-black px-2 py-1 rounded-xl">
+		<button
+			id="font-toggler"
+			class="border border-black px-2 py-1 rounded-lg"
+		>
 			sans / serif
 		</button>
 		font
 	</p>
-	<p>
+
+	<label>
+		WPM:
+		<input
+			class="w-[6ch] min-w-[3ch] p-1 border border-black rounded-lg text-center"
+			type="number"
+			name="speed-input"
+			id="speed-input"
+			value="200"
+			min="0"
+		/>
+	</label>
+
+	<label>
 		Go to word N°
 		<input
-			class="w-[4ch] overflow-hidden p-1 border border-black rounded-xl text-right"
+			class="w-[3ch] min-w-[3ch] p-1 border border-black rounded-lg text-center"
 			type="number"
 			name="word-number-input"
 			id="word-number-input"
 			value="0"
 			min="0"
 		/>
-	</p>
-	<p>
-		Speech Character
+	</label>
+
+	<label>
+		Speech character/s
 		<input
-			class="w-fit max-w-6 overflow-hidden p-1 border border-black rounded-lg text-center"
+			class="w-[3ch] min-w-[3ch] p-1 border border-black rounded-lg text-center"
 			type="text"
 			name="speech-char-input"
 			id="speech-char-input"
 			value='"'
 			minlength="1"
 		/>
-	</p>
+	</label>
 </aside>
 
+<style>
+	input::-webkit-outer-spin-button,
+	input::-webkit-inner-spin-button {
+		-webkit-appearance: none;
+		margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+	}
+
+	input[type="number"] {
+		-moz-appearance: textfield; /* Firefox */
+	}
+</style>
+
 <script>
+	import { FONTS } from "../constants";
+	import { setFont, setWPM, text } from "../stores/text";
+
+	let fontoggle = document.getElementById("font-toggler");
+	let speed = document.getElementById("speed-input");
 	let wordnum = document.getElementById("word-number-input");
+	let speechar = document.getElementById("speech-char-input");
+
+	fontoggle?.addEventListener("click", () => {
+		setFont(
+			text.get().font === FONTS.GARAMOND ? FONTS.LATO : FONTS.GARAMOND,
+		);
+	});
+
+	speed?.addEventListener("input", (e) => {
+		// @ts-ignore
+		e.target.style.width = e.target.value.length + 2 + "ch";
+
+		// @ts-ignore
+		let newSpeed = parseInt(e.target.value.length) ?? 200;
+		if (newSpeed) setWPM(newSpeed);
+	});
 
 	wordnum?.addEventListener("input", (e) => {
 		// @ts-ignore
-		e.target.style.width = e.target.value.length + 3 + "ch";
+		e.target.style.width = e.target.value.length + 2 + "ch";
+	});
+
+	speechar?.addEventListener("input", (e) => {
+		// @ts-ignore
+		e.target.style.width = e.target.value.length + 2 + "ch";
 	});
 </script>

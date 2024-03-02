@@ -11,7 +11,7 @@ interface Props {
 		<!-- How to use -->
 		<button
 			title="How to use"
-			class="font-mono text-3xl border border-black rounded-full w-10 h-10 hover:scale-110 transition-transform"
+			class="font-mono text-3xl border border-black rounded-full w-10 h-10 pt-[0.125rem] hover:scale-110 transition-transform"
 		>
 			?
 		</button>
@@ -19,7 +19,7 @@ interface Props {
 		<!-- Why use -->
 		<button
 			title="Why use"
-			class="font-mono text-3xl border border-black rounded-full w-10 h-10 hover:scale-110 transition-transform"
+			class="font-mono text-3xl border border-black rounded-full w-10 h-10 pt-[0.125rem] hover:scale-110 transition-transform"
 		>
 			!
 		</button>
@@ -31,6 +31,11 @@ interface Props {
 	</div>
 
 	<div>
-		<button>Load Text</button>
+		<button
+			id="text-upload"
+			class="border border-black px-6 py-3 rounded-3xl"
+		>
+			Load Text
+		</button>
 	</div>
 </section>

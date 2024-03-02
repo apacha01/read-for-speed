@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import OptionsHeader from "../components/OptionsHeader.astro";
+import TextInformation from "../components/TextInformation.astro";
 ---
 
 <Layout
@@ -9,7 +10,8 @@ import OptionsHeader from "../components/OptionsHeader.astro";
 >
 	<main class="w-full h-full px-12 pt-10 pb-20 flex flex-col justify-between">
 		<OptionsHeader class="flex justify-between" />
-		<section class="flex flex-col gap-6 items-center">
+		<TextInformation class="absolute top-48" />
+		<section class="flex flex-col flex-1 gap-6 items-center">
 			<div
 				class="text-6xl text-center px-32 py-4 border border-black mt-auto"
 			>

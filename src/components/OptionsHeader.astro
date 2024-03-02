@@ -1,0 +1,36 @@
+---
+import ThemeToggler from "./ThemeToggler.astro";
+
+interface Props {
+	class?: string;
+}
+---
+
+<section class={Astro.props.class}>
+	<div class="flex gap-8">
+		<!-- How to use -->
+		<button
+			title="How to use"
+			class="font-mono text-3xl border border-black rounded-full w-10 h-10 hover:scale-110 transition-transform"
+		>
+			?
+		</button>
+
+		<!-- Why use -->
+		<button
+			title="Why use"
+			class="font-mono text-3xl border border-black rounded-full w-10 h-10 hover:scale-110 transition-transform"
+		>
+			!
+		</button>
+
+		<!-- Theme Toggler -->
+		<ThemeToggler
+			class="w-10 h-10 inline-flex hover:scale-110 transition-transform"
+		/>
+	</div>
+
+	<div>
+		<button>Load Text</button>
+	</div>
+</section>

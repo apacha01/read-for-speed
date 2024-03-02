@@ -1,0 +1,28 @@
+---
+import Moon from "./Icons/Moon.astro";
+import Sun from "./Icons/Sun.astro";
+
+interface Props {
+	class?: string;
+}
+---
+
+<button id="theme-toggler" class:list={["relative", Astro.props.class]}>
+	<Sun
+		class="absolute w-full h-full opacity-0 dark:opacity-100 -rotate-90 dark:rotate-0 transition-transform"
+	/>
+	<Moon
+		class="absolute w-full h-full opacity-100 dark:opacity-0 rotate-0 dark:rotate-90 transition-transform"
+	/>
+</button>
+
+<script>
+	document.querySelector("#theme-toggler")?.addEventListener("click", () => {
+		const html = document.querySelector("html");
+
+		localStorage.theme = html?.classList.contains("dark")
+			? "light"
+			: "dark";
+		html?.classList.toggle("dark");
+	});
+</script>

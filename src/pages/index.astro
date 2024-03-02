@@ -1,15 +1,14 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import OptionsHeader from "../components/OptionsHeader.astro";
 ---
 
 <Layout
 	title="Read For Speed"
 	description="A word by word reader to improve read faster. If you don't move your eyes, you can read as fast as your brain processes the information, which is really fast."
 >
-	<main class="w-full h-full px-12 py-20 flex justify-center">
-		<section class="flex">
-			<!-- header icons -->
-		</section>
+	<main class="w-full h-full px-12 pt-10 pb-20 flex flex-col justify-between">
+		<OptionsHeader class="flex justify-between" />
 		<section class="flex flex-col gap-6 items-center">
 			<div
 				class="text-6xl text-center px-32 py-4 border border-black mt-auto"
@@ -21,9 +20,6 @@ import Layout from "../layouts/Layout.astro";
 			>
 				Play / Pause
 			</button>
-		</section>
-		<section>
-			<!-- text input -->
 		</section>
 	</main>
 </Layout>

@@ -15,6 +15,25 @@ const { title, description } = Astro.props;
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<title>{title}</title>
+
+		<!-- Best inline in `head` to avoid FOUC -->
+		<script is:inline>
+			if (
+				localStorage.theme === "dark" ||
+				(!("theme" in localStorage) &&
+					window.matchMedia("(prefers-color-scheme: dark)").matches)
+			) {
+				document.documentElement.classList.add("dark");
+			} else {
+				document.documentElement.classList.remove("dark");
+			}
+
+			// Whenever the user explicitly chooses light mode
+			localStorage.theme = "light";
+
+			// Whenever the user explicitly chooses dark mode
+			localStorage.theme = "dark";
+		</script>
 	</head>
 	<body class="w-screen h-screen max-w-screen min-h-screen">
 		<slot />

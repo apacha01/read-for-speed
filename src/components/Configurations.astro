@@ -1,0 +1,40 @@
+<aside class={Astro.props.class}>
+	<p>
+		I prefer a
+		<button class="border border-black px-2 py-1 rounded-xl">
+			sans / serif
+		</button>
+		font
+	</p>
+	<p>
+		Go to word N°
+		<input
+			class="w-[4ch] overflow-hidden p-1 border border-black rounded-xl text-right"
+			type="number"
+			name="word-number-input"
+			id="word-number-input"
+			value="0"
+			min="0"
+		/>
+	</p>
+	<p>
+		Speech Character
+		<input
+			class="w-fit max-w-6 overflow-hidden p-1 border border-black rounded-lg text-center"
+			type="text"
+			name="speech-char-input"
+			id="speech-char-input"
+			value='"'
+			minlength="1"
+		/>
+	</p>
+</aside>
+
+<script>
+	let wordnum = document.getElementById("word-number-input");
+
+	wordnum?.addEventListener("input", (e) => {
+		// @ts-ignore
+		e.target.style.width = e.target.value.length + 3 + "ch";
+	});
+</script>

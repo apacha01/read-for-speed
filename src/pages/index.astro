@@ -2,6 +2,7 @@
 import Layout from "../layouts/Layout.astro";
 import OptionsHeader from "../components/OptionsHeader.astro";
 import TextInformation from "../components/TextInformation.astro";
+import Configurations from "../components/Configurations.astro";
 ---
 
 <Layout
@@ -11,14 +12,17 @@ import TextInformation from "../components/TextInformation.astro";
 	<main class="w-full h-full px-12 pt-10 pb-20 flex flex-col justify-between">
 		<OptionsHeader class="flex justify-between" />
 		<TextInformation class="absolute top-48" />
+		<Configurations
+			class="absolute top-48 right-0 flex flex-col items-end gap-4 pr-12"
+		/>
 		<section class="flex flex-col flex-1 gap-6 items-center">
 			<div
-				class="text-6xl text-center px-32 py-4 border border-black mt-auto"
+				class="text-6xl text-center px-32 py-4 border border-black mt-auto rounded-3xl"
 			>
 				Word
 			</div>
 			<button
-				class="text-9xl text-center py-16 px-32 border border-black mt-auto"
+				class="text-9xl text-center py-16 px-32 border border-black mt-auto rounded-3xl"
 			>
 				Play / Pause
 			</button>

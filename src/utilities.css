@@ -1,0 +1,7 @@
+.themed-borders {
+	@apply border-carrot-orange-950 dark:border-carrot-orange-500
+}
+
+.themed-icons {
+	@apply text-carrot-orange-950 dark:text-carrot-orange-500
+}

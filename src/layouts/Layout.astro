@@ -1,6 +1,7 @@
 ---
 import "@fontsource/eb-garamond";
 import "@fontsource/lato";
+import "../utilities.css";
 
 interface Props {
 	title: string;
@@ -32,7 +33,9 @@ const { title, description } = Astro.props;
 			}
 		</script>
 	</head>
-	<body class="w-screen h-screen max-w-screen min-h-screen">
+	<body
+		class="w-screen h-screen max-w-screen min-h-screen bg-carrot-orange-100 text-carrot-orange-950 dark:bg-[#333] dark:text-carrot-orange-50"
+	>
 		<slot />
 	</body>
 </html>

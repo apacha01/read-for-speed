@@ -5,7 +5,7 @@ interface Props {
 	description?: string;
 }
 
-const { title, subtitle, description } = Astro.props;
+const { title, subtitle = "", description = "" } = Astro.props;
 ---
 
 <div
@@ -15,10 +15,16 @@ const { title, subtitle, description } = Astro.props;
 	<article
 		class="flex flex-col justify-center items-center w-fit h-fit max-w-[900px] max-h-[80vh] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-carrot-orange-200 dark:bg-carrot-orange-950 border-2 border-carrot-orange-700 rounded-xl p-10"
 	>
-		<h2 class="text-6xl">{title}</h2>
-		{subtitle && <h4 class="text-3xl mb-6 opacity-90">{subtitle}</h4>}
-		{description && <p class="text-xl text-pretty mb-6">{description}</p>}
-		<slot />
+		<h2 id="__modal_title__" class="text-6xl">{title}</h2>
+		<h4 id="__modal_subtitle__" class="text-2xl mb-6 opacity-90">
+			{subtitle}
+		</h4>
+		<p id="__modal_description__" class="text-xl text-pretty mb-6">
+			{description}
+		</p>
+		<div id="__modal_content__">
+			<slot />
+		</div>
 		<button
 			id="close-modal"
 			class="text-3xl font-bold tracking-wider bg-carrot-orange-700 text-carrot-orange-100 px-6 py-3 rounded-full mt-6"

@@ -6,34 +6,53 @@ interface TextConfigs {
 	wpm: number;
 	font: string;
 	play: boolean;
-}
+	index: number;
+	speechar: string;
+};
 
 const defaultConfigs = {
 	words: [],
 	wpm: 300,
 	font: FONTS.GARAMOND,
-	play: false
-}
+	play: false,
+	index: 0,
+	speechar: '"'
+};
 
 export const text = map<TextConfigs>(defaultConfigs);
 
 export const setFont = (font: typeof FONTS[keyof typeof FONTS]) => {
 	text.setKey('font', font);
-}
+};
 
 export const setWPM = (wpm: number) => {
 	if (wpm < 0) wpm = 1;
 	text.setKey('wpm', wpm);
-}
+};
 
 export const setWords = (words: string[]) => {
 	text.setKey('words', words);
-}
+};
 
 export const play = () => {
 	text.setKey('play', true);
-}
+};
 
 export const pause = () => {
 	text.setKey('play', false);
-}
+};
+
+export const togglePlay = () => {
+	text.setKey('play', !text.get().play);
+};
+
+export const setIndex = (i: number) => {
+	if (i >= text.get().words.length) i = text.get().words.length - 1;
+	if (i < 0) i = 0;
+
+	text.setKey('index', i);
+};
+
+export const setSpeechar = (c: string) => {
+	text.setKey('speechar', c);
+};

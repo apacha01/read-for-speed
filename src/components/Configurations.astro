@@ -62,7 +62,13 @@
 
 <script>
 	import { FONTS } from "../constants";
-	import { setFont, setWPM, text } from "../stores/configs";
+	import {
+		setFont,
+		setIndex,
+		setSpeechar,
+		setWPM,
+		text,
+	} from "../stores/configs";
 
 	let fontoggle = document.getElementById("font-toggler");
 	let speed = document.getElementById("speed-input");
@@ -80,17 +86,31 @@
 		e.target.style.width = e.target.value.length + 2 + "ch";
 
 		// @ts-ignore
-		let newSpeed = parseInt(e.target.value.length) ?? 200;
-		if (newSpeed) setWPM(newSpeed);
+		let newSpeed = isNaN(parseInt(e.target.value))
+			? 300
+			: // @ts-ignore
+				parseInt(e.target.value);
+		setWPM(newSpeed);
 	});
 
 	wordnum?.addEventListener("input", (e) => {
 		// @ts-ignore
 		e.target.style.width = e.target.value.length + 2 + "ch";
+
+		// @ts-ignore
+		let newIndex = isNaN(parseInt(e.target.value))
+			? 0
+			: // @ts-ignore
+				parseInt(e.target.value);
+		setIndex(newIndex);
 	});
 
 	speechar?.addEventListener("input", (e) => {
 		// @ts-ignore
 		e.target.style.width = e.target.value.length + 2 + "ch";
+
+		// @ts-ignore
+		let newSpeechar = e.target.value ?? '"';
+		setSpeechar(newSpeechar);
 	});
 </script>

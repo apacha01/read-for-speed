@@ -16,3 +16,12 @@
 		<span id="chapter" class="font-bold text-lg">Chapter 1</span>
 	</div> -->
 </aside>
+
+<script>
+	import { text } from "../stores/configs";
+	text.subscribe((v, ov, c) => {
+		if (c === "index")
+			// @ts-ignore
+			document.getElementById("word-number").innerText = v.index;
+	});
+</script>

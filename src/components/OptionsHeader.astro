@@ -50,9 +50,11 @@ interface Props {
 
 <script>
 	import { openModal } from "../stores/modal";
+	import { setWords } from "../stores/configs";
 
 	let howBtn = document.getElementById("how-to");
 	let whyBtn = document.getElementById("why-to");
+	let loadTextBtn = document.getElementById("text-upload");
 
 	const howInfo = {
 		title: "How to use",
@@ -81,6 +83,7 @@ interface Props {
 						character that the text uses for conversations
 					</li>
 				</ul>`,
+		closeBtnLabel: "Close",
 	};
 
 	const whyInfo = {
@@ -104,25 +107,72 @@ interface Props {
 				</ul>
 				<p class="text-xl text-center">Basically your brain is amazing, so make the most out of it with this app.</p>
 				`,
+		closeBtnLabel: "Close",
+	};
+
+	const loadInfo = {
+		title: "Paste your text here",
+		subtitle: "",
+		description: "",
+		content: `<textarea
+					id="paste-text-area"
+					placeholder="Paste the text to read here..."
+					class="w-[800px] h-[50vh] p-4 overflow-y-auto bg-carrot-orange-100 text-carrot-orange-950 dark:bg-[#333] dark:text-carrot-orange-50 border-2 themed-borders resize-none rounded-lg"
+				></textarea>`,
+		closeBtnLabel: "Ready",
 	};
 
 	const modalTitle = document.getElementById("__modal_title__");
 	const modalSubtitle = document.getElementById("__modal_subtitle__");
 	const modalDescription = document.getElementById("__modal_description__");
 	const modalContent = document.getElementById("__modal_content__");
+	const modalCloseButton = document.getElementById("__modal_close_button__");
+
+	const setModalInfo = ({
+		title,
+		subtitle,
+		description,
+		content,
+		closeBtnLabel,
+	}: {
+		title: string;
+		subtitle: string;
+		description: string;
+		content: string;
+		closeBtnLabel: string;
+	}) => {
+		if (modalTitle) modalTitle.innerText = title;
+		if (modalSubtitle) modalSubtitle.innerText = subtitle;
+		if (modalDescription) modalDescription.innerText = description;
+		if (modalContent) modalContent.innerHTML = content;
+		if (modalCloseButton) modalCloseButton.innerText = closeBtnLabel;
+	};
 
 	howBtn?.addEventListener("click", () => {
-		if (modalTitle) modalTitle.innerText = howInfo.title;
-		if (modalSubtitle) modalSubtitle.innerText = howInfo.subtitle;
-		if (modalDescription) modalDescription.innerText = howInfo.description;
-		if (modalContent) modalContent.innerHTML = howInfo.content;
+		setModalInfo(howInfo);
 		openModal();
 	});
 	whyBtn?.addEventListener("click", () => {
-		if (modalTitle) modalTitle.innerText = whyInfo.title;
-		if (modalSubtitle) modalSubtitle.innerText = whyInfo.subtitle;
-		if (modalDescription) modalDescription.innerText = whyInfo.description;
-		if (modalContent) modalContent.innerHTML = whyInfo.content;
+		setModalInfo(whyInfo);
+		openModal();
+	});
+	loadTextBtn?.addEventListener("click", () => {
+		setModalInfo(loadInfo);
+
+		if (modalCloseButton) {
+			const onClickHandler = () => {
+				const rawText =
+					// @ts-ignore
+					document.getElementById("paste-text-area").value;
+				const words = rawText.split(" ");
+
+				setWords(words);
+
+				modalCloseButton?.removeEventListener("click", onClickHandler);
+			};
+			modalCloseButton.addEventListener("click", onClickHandler);
+		}
+
 		openModal();
 	});
 </script>

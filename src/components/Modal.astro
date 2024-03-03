@@ -26,7 +26,7 @@ const { title, subtitle = "", description = "" } = Astro.props;
 			<slot />
 		</div>
 		<button
-			id="close-modal"
+			id="__modal_close_button__"
 			class="text-3xl font-bold tracking-wider bg-carrot-orange-700 text-carrot-orange-100 px-6 py-3 rounded-full mt-6"
 		>
 			Close
@@ -37,7 +37,7 @@ const { title, subtitle = "", description = "" } = Astro.props;
 <script>
 	import { showModal, closeModal } from "../stores/modal";
 
-	const closeBtn = document.getElementById("close-modal");
+	const closeBtn = document.getElementById("__modal_close_button__");
 	const modal = document.getElementById("__modal__");
 
 	closeBtn?.addEventListener("click", () => {

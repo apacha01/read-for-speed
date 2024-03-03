@@ -39,12 +39,7 @@ const { title, subtitle, description } = Astro.props;
 	});
 
 	showModal.subscribe((v) => {
-		if (v) {
-			modal?.classList.remove("invisible");
-			modal?.classList.remove("opacity-0");
-		} else {
-			modal?.classList.add("invisible");
-			modal?.classList.add("opacity-0");
-		}
+		if (v) modal?.classList.remove("invisible", "opacity-0");
+		else modal?.classList.add("invisible", "opacity-0");
 	});
 </script>

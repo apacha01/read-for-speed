@@ -1,0 +1,50 @@
+---
+interface Props {
+	title: string;
+	subtitle?: string;
+	description?: string;
+}
+
+const { title, subtitle, description } = Astro.props;
+---
+
+<div
+	id="__modal__"
+	class="w-screen h-screen absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-black/75 z-[99999] invisible opacity-0"
+>
+	<article
+		class="flex flex-col justify-center items-center w-fit h-fit max-w-[900px] max-h-[80vh] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-carrot-orange-200 dark:bg-carrot-orange-950 border-2 border-carrot-orange-700 rounded-xl p-10"
+	>
+		<h2 class="text-6xl">{title}</h2>
+		{subtitle && <h4 class="text-3xl mb-6 opacity-90">{subtitle}</h4>}
+		{description && <p class="text-xl text-pretty mb-6">{description}</p>}
+		<slot />
+		<button
+			id="close-modal"
+			class="text-3xl font-bold tracking-wider bg-carrot-orange-700 text-carrot-orange-100 px-6 py-3 rounded-full mt-6"
+		>
+			Close
+		</button>
+	</article>
+</div>
+
+<script>
+	import { showModal, closeModal } from "../stores/modal";
+
+	const closeBtn = document.getElementById("close-modal");
+	const modal = document.getElementById("__modal__");
+
+	closeBtn?.addEventListener("click", () => {
+		closeModal();
+	});
+
+	showModal.subscribe((v) => {
+		if (v) {
+			modal?.classList.remove("invisible");
+			modal?.classList.remove("opacity-0");
+		} else {
+			modal?.classList.add("invisible");
+			modal?.classList.add("opacity-0");
+		}
+	});
+</script>

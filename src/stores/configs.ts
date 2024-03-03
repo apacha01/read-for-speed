@@ -1,19 +1,21 @@
 import { map } from "nanostores";
 import { FONTS } from "../constants";
 
-interface TextOptions {
+interface TextConfigs {
 	words: string[];
 	wpm: number;
 	font: string;
+	play: boolean;
 }
 
-const defaultOptions = {
+const defaultConfigs = {
 	words: [],
-	wpm: 200,
-	font: FONTS.GARAMOND
+	wpm: 300,
+	font: FONTS.GARAMOND,
+	play: false
 }
 
-export const text = map<TextOptions>(defaultOptions);
+export const text = map<TextConfigs>(defaultConfigs);
 
 export const setFont = (font: typeof FONTS[keyof typeof FONTS]) => {
 	text.setKey('font', font);
@@ -26,4 +28,12 @@ export const setWPM = (wpm: number) => {
 
 export const setWords = (words: string[]) => {
 	text.setKey('words', words);
+}
+
+export const play = () => {
+	text.setKey('play', true);
+}
+
+export const pause = () => {
+	text.setKey('play', false);
 }

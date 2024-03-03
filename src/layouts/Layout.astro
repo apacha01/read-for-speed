@@ -47,7 +47,7 @@ const { title, description } = Astro.props;
 </style>
 
 <script>
-	import { text } from "../stores/text";
+	import { text } from "../stores/configs";
 
 	text.subscribe((v, ov, c) => {
 		if (c === "font") {

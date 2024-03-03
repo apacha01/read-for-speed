@@ -17,7 +17,8 @@
 			type="number"
 			name="speed-input"
 			id="speed-input"
-			value="200"
+			value="300"
+			step="50"
 			min="0"
 		/>
 	</label>
@@ -61,7 +62,7 @@
 
 <script>
 	import { FONTS } from "../constants";
-	import { setFont, setWPM, text } from "../stores/text";
+	import { setFont, setWPM, text } from "../stores/configs";
 
 	let fontoggle = document.getElementById("font-toggler");
 	let speed = document.getElementById("speed-input");

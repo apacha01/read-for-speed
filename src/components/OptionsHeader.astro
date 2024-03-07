@@ -162,10 +162,14 @@ interface Props {
 			const onClickHandler = () => {
 				const rawText =
 					// @ts-ignore
-					document.getElementById("paste-text-area").value;
-				const words = rawText.split(" ");
+					document.getElementById("paste-text-area").value as string;
 
-				setWords(words);
+				const processedText =
+					rawText.localeCompare("") === 0
+						? []
+						: rawText.replaceAll("\n", "").split(" ");
+
+				setWords(processedText);
 
 				modalCloseButton?.removeEventListener("click", onClickHandler);
 			};

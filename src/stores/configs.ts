@@ -56,7 +56,3 @@ export const setIndex = (i: number) => {
 
 	text.setKey('index', i);
 };
-
-text.subscribe(v => {
-	console.log(v);
-})

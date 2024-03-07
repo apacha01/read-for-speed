@@ -8,7 +8,6 @@ interface TextConfigs {
 	play: boolean;
 	stopPlaying: number;
 	index: number;
-	speechar: string;
 };
 
 const defaultConfigs = {
@@ -18,7 +17,6 @@ const defaultConfigs = {
 	play: false,
 	stopPlaying: -1,
 	index: 0,
-	speechar: '"'
 };
 
 export const text = map<TextConfigs>(defaultConfigs);
@@ -57,10 +55,6 @@ export const setIndex = (i: number) => {
 	if (i < 0) i = 0;
 
 	text.setKey('index', i);
-};
-
-export const setSpeechar = (c: string) => {
-	text.setKey('speechar', c);
 };
 
 text.subscribe(v => {

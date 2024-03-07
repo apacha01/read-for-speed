@@ -34,18 +34,6 @@
 			min="0"
 		/>
 	</label>
-
-	<label>
-		Speech character/s
-		<input
-			class="w-[3ch] min-w-[3ch] p-1 border themed-borders rounded-lg text-center bg-carrot-orange-100 dark:bg-[#333]"
-			type="text"
-			name="speech-char-input"
-			id="speech-char-input"
-			value='"'
-			minlength="1"
-		/>
-	</label>
 </aside>
 
 <style>
@@ -62,18 +50,11 @@
 
 <script>
 	import { FONTS } from "../constants";
-	import {
-		setFont,
-		setIndex,
-		setSpeechar,
-		setWPM,
-		text,
-	} from "../stores/configs";
+	import { setFont, setIndex, setWPM, text } from "../stores/configs";
 
 	let fontoggle = document.getElementById("font-toggler");
 	let speed = document.getElementById("speed-input");
 	let wordnum = document.getElementById("word-number-input");
-	let speechar = document.getElementById("speech-char-input");
 
 	fontoggle?.addEventListener("click", () => {
 		setFont(
@@ -103,14 +84,5 @@
 			: // @ts-ignore
 				parseInt(e.target.value);
 		setIndex(newIndex);
-	});
-
-	speechar?.addEventListener("input", (e) => {
-		// @ts-ignore
-		e.target.style.width = e.target.value.length + 2 + "ch";
-
-		// @ts-ignore
-		let newSpeechar = e.target.value ?? '"';
-		setSpeechar(newSpeechar);
 	});
 </script>

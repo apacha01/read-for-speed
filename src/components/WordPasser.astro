@@ -1,0 +1,60 @@
+---
+
+---
+
+<div
+	id="word"
+	class="text-6xl text-center px-32 py-4 border themed-borders mt-auto rounded-3xl"
+>
+	Word
+</div>
+
+<script>
+	import { setIndex, setStopPlaying, text } from "../stores/configs";
+
+	const wordContainer = document.getElementById("word");
+
+	const startPlaying = (wpm: number) => {
+		return setInterval(
+			() => {
+				setIndex(text.get().index + 1);
+			},
+			1000 / (wpm / 60),
+		);
+	};
+
+	// @ts-ignore
+	const updateWord = (w: string) => (wordContainer.innerText = w);
+
+	text.subscribe((v, ov, c) => {
+		const keyChanged = c ?? "none";
+
+		if ("play".localeCompare(keyChanged) === 0) {
+			if (v.play) {
+				setStopPlaying(startPlaying(v.wpm));
+			} else {
+				clearInterval(v.stopPlaying);
+				setStopPlaying(-1);
+			}
+		}
+
+		if ("index".localeCompare(keyChanged) === 0)
+			updateWord(v.words[v.index]);
+
+		if ("words".localeCompare(keyChanged) === 0 && v.words.length > 0) {
+			if (v.play) {
+				clearInterval(v.stopPlaying);
+				setStopPlaying(-1);
+			}
+			updateWord(v.words[0]);
+			setIndex(0);
+		}
+
+		if ("wpm".localeCompare(keyChanged) === 0) {
+			if (v.play) {
+				clearInterval(v.stopPlaying);
+				setStopPlaying(-1);
+			}
+		}
+	});
+</script>

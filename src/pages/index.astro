@@ -3,6 +3,7 @@ import Layout from "../layouts/Layout.astro";
 import OptionsHeader from "../components/OptionsHeader.astro";
 import TextInformation from "../components/TextInformation.astro";
 import Configurations from "../components/Configurations.astro";
+import WordPasser from "../components/WordPasser.astro";
 ---
 
 <Layout
@@ -16,12 +17,9 @@ import Configurations from "../components/Configurations.astro";
 			class="absolute top-48 right-0 flex flex-col items-end gap-4 pr-16 text-lg"
 		/>
 		<section class="flex flex-col flex-1 gap-6 items-center">
-			<div
-				class="text-6xl text-center px-32 py-4 border themed-borders mt-auto rounded-3xl"
-			>
-				Word
-			</div>
+			<WordPasser />
 			<button
+				id="play-pause"
 				class="text-9xl text-center py-16 px-32 border themed-borders mt-auto rounded-3xl"
 			>
 				Play / Pause
@@ -29,3 +27,13 @@ import Configurations from "../components/Configurations.astro";
 		</section>
 	</main>
 </Layout>
+
+<script>
+	import { togglePlay } from "../stores/configs";
+
+	const playPauseBtn = document.getElementById("play-pause");
+
+	playPauseBtn?.addEventListener("click", () => {
+		togglePlay();
+	});
+</script>

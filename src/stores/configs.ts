@@ -6,6 +6,7 @@ interface TextConfigs {
 	wpm: number;
 	font: string;
 	play: boolean;
+	stopPlaying: number;
 	index: number;
 	speechar: string;
 };
@@ -15,6 +16,7 @@ const defaultConfigs = {
 	wpm: 300,
 	font: FONTS.GARAMOND,
 	play: false,
+	stopPlaying: -1,
 	index: 0,
 	speechar: '"'
 };
@@ -46,6 +48,10 @@ export const togglePlay = () => {
 	text.setKey('play', !text.get().play);
 };
 
+export const setStopPlaying = (stopPlaying: number) => {
+	text.setKey('stopPlaying', stopPlaying);
+};
+
 export const setIndex = (i: number) => {
 	if (i >= text.get().words.length) i = text.get().words.length - 1;
 	if (i < 0) i = 0;
@@ -56,3 +62,7 @@ export const setIndex = (i: number) => {
 export const setSpeechar = (c: string) => {
 	text.setKey('speechar', c);
 };
+
+text.subscribe(v => {
+	console.log(v);
+})

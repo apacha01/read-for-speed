@@ -36,4 +36,8 @@ import WordPasser from "../components/WordPasser.astro";
 	playPauseBtn?.addEventListener("click", () => {
 		togglePlay();
 	});
+
+	document.addEventListener("keyup", (e) => {
+		if (e.code === "Space") togglePlay();
+	});
 </script>

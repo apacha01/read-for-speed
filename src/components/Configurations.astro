@@ -34,6 +34,19 @@
 			min="0"
 		/>
 	</label>
+
+	<label>
+		Amount of words
+		<input
+			class="w-[3ch] min-w-[3ch] p-1 border themed-borders rounded-lg text-center bg-carrot-orange-100 dark:bg-[#333]"
+			type="number"
+			name="amount-word-input"
+			id="amount-word-input"
+			value="1"
+			min="1"
+			max="4"
+		/>
+	</label>
 </aside>
 
 <style>
@@ -50,11 +63,18 @@
 
 <script>
 	import { FONTS } from "../constants";
-	import { setFont, setIndex, setWPM, text } from "../stores/configs";
+	import {
+		setAmountOfWords,
+		setFont,
+		setIndex,
+		setWPM,
+		text,
+	} from "../stores/configs";
 
 	let fontoggle = document.getElementById("font-toggler");
 	let speed = document.getElementById("speed-input");
 	let wordnum = document.getElementById("word-number-input");
+	let amount = document.getElementById("amount-word-input");
 
 	fontoggle?.addEventListener("click", () => {
 		setFont(
@@ -84,5 +104,17 @@
 			: // @ts-ignore
 				parseInt(e.target.value);
 		setIndex(newIndex);
+	});
+
+	amount?.addEventListener("input", (e) => {
+		// @ts-ignore
+		e.target.style.width = e.target.value.length + 2 + "ch";
+
+		// @ts-ignore
+		let newAmount = isNaN(parseInt(e.target.value))
+			? 0
+			: // @ts-ignore
+				parseInt(e.target.value);
+		setAmountOfWords(newAmount);
 	});
 </script>

@@ -79,7 +79,7 @@ interface Props {
 					</li>
 					<li>
 						Aditionally you can change of font between a sans-serif (Lato) and a
-						serif (Garamond) type and the words per minute (WPM) at which the words pass from one to the next one.
+						serif (Garamond) type, the words per minute (WPM) and the amount of words to show in one pass.
 					</li>
 				</ul>`,
 		closeBtnLabel: "Close",
@@ -151,10 +151,12 @@ interface Props {
 		setModalInfo(howInfo);
 		openModal();
 	});
+
 	whyBtn?.addEventListener("click", () => {
 		setModalInfo(whyInfo);
 		openModal();
 	});
+
 	loadTextBtn?.addEventListener("click", () => {
 		setModalInfo(loadInfo);
 

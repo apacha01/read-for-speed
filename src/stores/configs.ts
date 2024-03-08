@@ -4,6 +4,7 @@ import { FONTS } from "../constants";
 interface TextConfigs {
 	words: string[];
 	wpm: number;
+	amountOfWords: number;
 	font: string;
 	play: boolean;
 	stopPlaying: number;
@@ -13,6 +14,7 @@ interface TextConfigs {
 const defaultConfigs = {
 	words: [],
 	wpm: 300,
+	amountOfWords: 1,
 	font: FONTS.GARAMOND,
 	play: false,
 	stopPlaying: -1,
@@ -28,6 +30,16 @@ export const setFont = (font: typeof FONTS[keyof typeof FONTS]) => {
 export const setWPM = (wpm: number) => {
 	if (wpm < 0) wpm = 1;
 	text.setKey('wpm', wpm);
+};
+
+export const setAmountOfWords = (amount: number) => {
+	amount =
+		amount > 1
+			? amount < 4
+				? amount
+				: 4
+			: 1;
+	text.setKey('amountOfWords', amount);
 };
 
 export const setWords = (words: string[]) => {

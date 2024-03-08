@@ -4,7 +4,7 @@
 
 <div
 	id="word"
-	class="text-6xl text-center px-32 py-4 border themed-borders mt-auto rounded-3xl"
+	class="text-8xl text-center px-32 py-4 border themed-borders mt-auto rounded-3xl"
 >
 	Word
 </div>
@@ -22,7 +22,7 @@
 	const startPlaying = (wpm: number) => {
 		return setInterval(
 			() => {
-				setIndex(text.get().index + 1);
+				setIndex(text.get().index + text.get().amountOfWords);
 			},
 			1000 / (wpm / 60),
 		);
@@ -43,15 +43,20 @@
 			}
 		}
 
-		if ("index".localeCompare(keyChanged) === 0)
-			updateWord(v.words[v.index]);
+		if (
+			"index".localeCompare(keyChanged) === 0 ||
+			"amountOfWords".localeCompare(keyChanged) === 0
+		)
+			updateWord(
+				v.words.slice(v.index, v.index + v.amountOfWords).join(" "),
+			);
 
 		if ("words".localeCompare(keyChanged) === 0 && v.words.length > 0) {
 			if (v.play) {
 				clearInterval(v.stopPlaying);
 				setStopPlaying(-1);
 			}
-			updateWord(v.words[0]);
+			updateWord(v.words.slice(0, v.amountOfWords).join(" "));
 			setIndex(0);
 		}
 

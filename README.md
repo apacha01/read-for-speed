@@ -1,8 +1,8 @@
 # Read for Speed
 
-A simple web app to read text that keeps your eyes in one place while it goes through the words. The original idea was to make it so i can upload an EPUB file and read that, but then i need an EPUB parser. And why spend a few hours learning to use dependency when you can spend months learning about the EPUB format and make your own parser? ...right?
+A simple web app to read text that keeps your eyes in one place while it goes through the words. The original idea was to make it so i can upload an EPUB file and read that, but then i need an EPUB parser. And why spend a few hours learning how to use dependency when you can spend months learning about the EPUB format and make your own parser? ...right?
 
-Anyways, this was the original sketch which i intend to follow in the future once that EPUB parser is ready:
+Anyways, right now i would say i have an MVP, but this was the original sketch which i intend to follow in the future once that EPUB parser is ready:
 ![Read for Speed web page sketch with excalidraw](./readme-imgs/reader-sketch.jpeg)
 
 You will see a few modifications to this design:

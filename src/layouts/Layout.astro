@@ -52,7 +52,7 @@ const { title, description } = Astro.props;
 	text.subscribe((v, ov, c) => {
 		if (c === "font") {
 			const html = document.querySelector("html");
-			html.style.fontFamily = v.font;
+			if (html) html.style.fontFamily = v.font;
 		}
 	});
 </script>

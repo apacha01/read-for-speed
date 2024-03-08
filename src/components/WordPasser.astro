@@ -10,7 +10,12 @@
 </div>
 
 <script>
-	import { setIndex, setStopPlaying, pause, text } from "../stores/configs";
+	import {
+		setIndex,
+		setStopPlaying,
+		text,
+		togglePlay,
+	} from "../stores/configs";
 
 	const wordContainer = document.getElementById("word");
 
@@ -51,10 +56,8 @@
 		}
 
 		if ("wpm".localeCompare(keyChanged) === 0) {
-			if (v.play) {
-				pause();
-				setStopPlaying(-1);
-			}
+			togglePlay();
+			togglePlay();
 		}
 	});
 </script>

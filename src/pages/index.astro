@@ -37,7 +37,7 @@ import WordPasser from "../components/WordPasser.astro";
 		togglePlay();
 	});
 
-	document.addEventListener("keyup", (e) => {
+	document.addEventListener("keypress", (e) => {
 		if (e.code === "Space") togglePlay();
 	});
 </script>

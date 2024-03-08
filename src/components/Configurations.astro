@@ -117,4 +117,18 @@
 				parseInt(e.target.value);
 		setAmountOfWords(newAmount);
 	});
+
+	document.addEventListener("keypress", (e) => {
+		if ("+".localeCompare(e.key) === 0) setWPM(text.get().wpm + 50);
+		if ("-".localeCompare(e.key) === 0) setWPM(text.get().wpm - 50);
+	});
+
+	text.subscribe((v, ov, c) => {
+		let changedKey = c ?? "none";
+
+		if ("wpm".localeCompare(changedKey)) {
+			// @ts-ignore
+			speed.value = v.wpm;
+		}
+	});
 </script>

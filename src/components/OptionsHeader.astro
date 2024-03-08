@@ -167,7 +167,7 @@ interface Props {
 				const processedText =
 					rawText.localeCompare("") === 0
 						? []
-						: rawText.replaceAll("\n", "").split(" ");
+						: rawText.replaceAll("\n", " ").trim().split(" ");
 
 				setWords(processedText);
 

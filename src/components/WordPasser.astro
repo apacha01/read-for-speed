@@ -61,8 +61,10 @@
 		}
 
 		if ("wpm".localeCompare(keyChanged) === 0) {
-			togglePlay();
-			togglePlay();
+			if (v.play) {
+				togglePlay();
+				togglePlay();
+			}
 		}
 	});
 </script>

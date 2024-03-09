@@ -36,7 +36,7 @@ The sketch should give you an idea, but for now there is no `Upload EPUB` button
 * If you want to modify the settings, then here is a briefing:
   * __I prefer a `serif/sans` font:__ this toggles the font between a serif font (Garamond) and a sans-serif font (Lato) of the __ENTIRE PAGE__, not just the text to read.
   * __`WPM` input:__ this sets the words per minute, meaning, the speed. You can also use `+` and `-` keys to increase, or decrease, the WPM by 50.
-  * __Go to word N°:__ this is like a _skip_ this kind of thing. You can chose the word to go to in case you were reading and had to stop (since this has no memory), just check on the left which word you left it when leaving the app.
+  * __Go to word N°:__ this is like a _skip_ kind of thing. You can chose the word to go to in case you were reading and had to stop (since this has no memory), just check on the left which word you left it when leaving the app.
   * __Amount of words:__ this sets the amount of words to show simultaneously at the center, with a maximum of 4 (to much would be useless).
 
 ## Downloading / Installing
@@ -48,6 +48,7 @@ You can just clone this repo with `git clone https://github.com/apacha01/read-fo
 * [![Typescript](https://img.shields.io/badge/Typescript-007ACC?style=for-the-badge&logo=typescript&logoColor=white&color=blue)](https://www.typescriptlang.org/) - JavaScript with syntax for types.
 
 ## Future Updates
+- [ ] Make page responsive.
 - [ ] Make it so the center expands into several words upon pausing.
 - [ ] See how to solve the speech character issue if possible.
 - [ ] Add EPUB parser and the `Upload EPUB` button.

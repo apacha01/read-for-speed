@@ -22,7 +22,7 @@ The main reasons for slow reading i found online are:
 Now, you need to work on eliminating those actions on your own, but this app does present an easier way to do it. You should use a speed (wpm) high enough so you don't have time to _speak_ the words in your head and focus on understanding without doing that. Regression is quite simple in this app 'cause when you pause, if you don't want to go back by a lot, you should see the text you just missed/want to re-read, but do try to avoid it. As for eye movement, well... it's completely erased thanks to the app. Do try to expand the amount of words if one seems to little, but make it so you don't move your eyes.
 
 > [!NOTE]
-> My personal preference is to use 400 WPM with amounts of words set to three, maybe you can try that.
+> My personal preference is to use 400 WPM with amounts of words set to one, maybe you can try that.
 
 ## How to use it
 
